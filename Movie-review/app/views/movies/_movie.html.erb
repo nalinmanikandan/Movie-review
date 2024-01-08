@@ -1,0 +1,25 @@
+<div id="<%= dom_id movie %>">
+  <p>
+    <strong>Name:</strong>
+    <%= movie.name %>
+  </p>
+  
+  <p>
+    <strong>Release date:</strong>
+    <%= movie.release_date %>
+  </p>
+  <div>
+    <%= render 'ratings/form' %>
+  </div>
+
+  <% if @movie.ratings.any? %>
+    <strong>Existing Ratings:</strong>
+    <ul>
+      <% @movie.ratings.group(:value).count.each do |rating, count| %>
+        <li>
+          <%= rating %> star: <%= count %> ratings
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

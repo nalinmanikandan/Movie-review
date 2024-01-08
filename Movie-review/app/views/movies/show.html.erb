@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+<div class="container">
+  <%= render @movie %>
+
+  <%= render 'reviews/form' %>
+  <%= render 'reviews/review' %>
+
+  <div>
+    <%= link_to "Edit this movie", edit_movie_path(@movie) if can? :edit, @movie %> |
+    <%= link_to "Back to movies", movies_path %>
+
+    <% if can? :delete, @movie %>
+      <%= button_to "Destroy this movie", @movie, method: :delete %>
+    <% end %>
+
+  </div>
+
+</div>

@@ -1,0 +1,12 @@
+<%= form_for [@movie, Review.new] do |f| %>
+
+  <div class="form-group">
+    <%= f.text_area :content, placeholder: "Write your review..." %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Create reviews", class: "btn btn-primary btn-sm" %>
+  </div>
+
+<% end %>
+

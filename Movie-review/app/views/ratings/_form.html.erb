@@ -1,0 +1,7 @@
+<strong>Rate this Movie:</strong>
+<%= form_for [@movie, Rating.new] do |f| %>
+
+  <%= f.collection_radio_buttons :value, (1..5), :to_s, :to_s %>
+  <%= f.submit "Submit Rating" %>
+
+<% end %>

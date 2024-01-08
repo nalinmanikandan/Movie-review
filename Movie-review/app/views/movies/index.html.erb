@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+<h1>Movies</h1>
+
+<%= render 'movies/movieSearch' %>
+
+<div id="movies">
+  <% @movies.each do |movie| %>
+
+    <div>
+      <strong>Movie: </strong>
+      <%= movie.name %><br>
+    </div>
+
+    <div>
+      <strong>Release Date: </strong>
+      <%= movie.release_date %>
+    </div>
+
+    <% if movie.rating_average %>
+        <div>
+          <strong>Ratings average:</strong>
+          <%= movie.rating_average %>
+        </div>
+    <% end %>
+
+    <% if movie.release_date.present? && movie.release_date <= Date.today %>
+      <%= link_to 'Review this movie', movie_path(movie), class: 'active-link ' %>
+    <% else %>
+      <p>This movie is not yet released.</p>
+    <% end %>
+
+  <% end %>
+</div>
+
+<%= link_to "New movie", new_movie_path %>
+<%= pagy_nav(@pagy).html_safe %>
